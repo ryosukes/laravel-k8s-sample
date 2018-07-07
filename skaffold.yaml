@@ -1,0 +1,16 @@
+apiVersion: skaffold/v1alpha2
+kind: Config
+build:
+  tagPolicy:
+    sha256: {}
+  artifacts:
+  - imageName: sample-app/app-dev
+    workspace: .
+    docker:
+      dockerfilePath: Dockerfile
+  local:
+    skipPush: true
+deploy:
+  kubectl:
+    manifests:
+    - kubernetes/app/*
