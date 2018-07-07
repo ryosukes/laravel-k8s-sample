@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: sample-app-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    ingress.kubernetes.io/ssl-redirect: “true”
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  tls:
+  - hosts:
+    - sample-laravel.localhost
+    secretName: tls-certificate
+  rules:
+  - host: sample-laravel.localhost
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: sample-app-service
+          servicePort: 80
