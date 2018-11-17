@@ -19,10 +19,6 @@ https://github.com/kubernetes/helm
 
 ```sh
 $ helm init
-$ tiller
-
-# at another console
-$ export HELM_HOST=localhost:44134
 $ helm install --name my-release stable/nginx-ingress
 
 ```
